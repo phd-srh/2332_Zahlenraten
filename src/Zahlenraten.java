@@ -37,8 +37,11 @@ public class Zahlenraten {
                 System.out.println("Gratuliere, die Zahl ist richtig");
                 break;
             }
+            else if (tipp > geheimeZahl){
+                System.out.println("Sorry, die gesuchte Zahl ist kleiner");
+            }
             else {
-                System.out.println("Sorry, die Zahl stimmt nicht");
+                System.out.println("Sorry, die gesuchte Zahl ist größer");
             }
         }
     }
