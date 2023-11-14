@@ -29,9 +29,17 @@ public class Zahlenraten {
         Scanner eingabe = new Scanner(System.in);
 
         int geheimeZahl = 745;
+        while (true) {
+            System.out.print("Bitte Tipp eingeben: ");
+            int tipp = eingabe.nextInt();
 
-        System.out.print("Bitte Tipp eingeben: ");
-        int tipp = eingabe.nextInt();
-        // TODO
+            if (tipp == geheimeZahl) {
+                System.out.println("Gratuliere, die Zahl ist richtig");
+                break;
+            }
+            else {
+                System.out.println("Sorry, die Zahl stimmt nicht");
+            }
+        }
     }
 }
