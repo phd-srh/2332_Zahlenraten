@@ -24,7 +24,30 @@ import java.util.Scanner;
  *                geheimeZahl 123 Tipp 356 -> 1 vorhandene Ziffer
  */
 
+    /* Einführung in das Thema Methoden
+     *
+     * Methoden aka Funktionen, Prozeduren, Unterprogramme, Subroutine
+     * -> Eigenständiger Programmabschnitt, der bei Bedarf benutzt werden kann.
+     *
+     * Aufbau von Methoden:
+     * Methode = Methodenkopf + Methodenrumpf
+     *
+     * Methodenkopf =
+     * Sichtbarkeit (public) Modifikator (static) Datentyp Methodenname
+     *                                          "(" Parameterliste ")"
+     *
+     * Methodensignatur = Methodenname + Datentyper aller Parameter
+     * (hat was mit Überladung zu tun)
+     *
+     * Methodenrumpf = "{" Anweisungen "}"
+     *
+     * Parameterliste = [ Datentyp Parametername [, ... ] ]
+     */
+
 public class Zahlenraten {
+
+
+
     public static void main(String[] args) {
         Scanner eingabe = new Scanner(System.in);
 
@@ -47,7 +70,17 @@ public class Zahlenraten {
             }
 
             int anzahlKorrekteZiffern = 0;
-            // TODO
+            int kopieDerGeheimenZahl = geheimeZahl;
+            while ( tipp > 0 ) {
+                int zifferGeheimeZahl = kopieDerGeheimenZahl % 10;
+                int zifferTipp = tipp % 10;
+                if (zifferGeheimeZahl == zifferTipp) {
+                    anzahlKorrekteZiffern++;
+                }
+                kopieDerGeheimenZahl = kopieDerGeheimenZahl / 10;
+                tipp = tipp / 10;
+            }
+            System.out.println("Es sind " + anzahlKorrekteZiffern + " Ziffern korrekt");
         }
         System.out.println("Sie haben " + anzahlVersuche + " Versuche gebraucht.");
     }
