@@ -29,10 +29,17 @@ public class Zahlenraten {
         Scanner eingabe = new Scanner(System.in);
 
         int geheimeZahl = (int)(Math.random() * 900 + 100);
+        int anzahlVersuche = 0;
         while (true) {
             System.out.print("Bitte Tipp eingeben: ");
             int tipp = eingabe.nextInt();
 
+            if (tipp == 0) {
+                System.out.println("Die gesuchte Zahl war " + geheimeZahl);
+                break;
+            }
+
+            anzahlVersuche++;
             if (tipp == geheimeZahl) {
                 System.out.println("Gratuliere, die Zahl ist richtig");
                 break;
@@ -44,5 +51,6 @@ public class Zahlenraten {
                 System.out.println("Sorry, die gesuchte Zahl ist größer");
             }
         }
+        System.out.println("Sie haben " + anzahlVersuche + " Versuche gebraucht.");
     }
 }
