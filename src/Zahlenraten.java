@@ -21,14 +21,15 @@ import java.util.Scanner;
  *     Zusatz: geheimeZahl darf keine doppelten Ziffern enthalten
  *     Beispiele: geheimeZahl 123 Tipp 145 -> 1 korrekte Ziffer
  *                geheimeZahl 123 Tipp 456 -> 0 korrekte Ziffern
- *                geheimeZahl 123 Tipp 356 -> 1 vorhanden Ziffer
+ *                geheimeZahl 123 Tipp 356 -> 1 vorhandene Ziffer
  */
 
 public class Zahlenraten {
     public static void main(String[] args) {
         Scanner eingabe = new Scanner(System.in);
 
-        int geheimeZahl = (int)(Math.random() * 9000 + 1000);
+//        int geheimeZahl = (int)(Math.random() * 9000 + 1000);
+        int geheimeZahl = 123; // nur zum Testen
         int anzahlVersuche = 0;
         while (true) {
             System.out.print("Bitte Tipp eingeben: ");
@@ -44,18 +45,9 @@ public class Zahlenraten {
                 System.out.println("Gratuliere, die Zahl ist richtig");
                 break;
             }
-            else if (tipp - 500 > geheimeZahl) {
-                System.out.println("Sorry, die gesuchte Zahl ist viel kleiner");
-            }
-            else if (tipp > geheimeZahl) {
-                System.out.println("Sorry, die gesuchte Zahl ist kleiner");
-            }
-            else if (tipp + 500 < geheimeZahl) {
-                System.out.println("Sorry, die gesuchte Zahl ist viel größer");
-            }
-            else {
-                System.out.println("Sorry, die gesuchte Zahl ist größer");
-            }
+
+            int anzahlKorrekteZiffern = 0;
+            // TODO
         }
         System.out.println("Sie haben " + anzahlVersuche + " Versuche gebraucht.");
     }
