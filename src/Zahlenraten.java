@@ -13,7 +13,7 @@ import java.util.Scanner;
  *     Raten kann vorzeitig mit Eingabe der 0 beendet werden
  *
  * v4: Die geheimeZahl liegt nun im Bereich 1000 - 9999
- *     Ausgabe: Zahl ist viel kleiner/größer
+ *     Ausgabe: Zahl ist viel kleiner/größer (Delta = 500)
  *
  * v5: Mastermind-style
  *     Ausgabe: Es sind x Ziffern korrekt bzw.
@@ -28,7 +28,7 @@ public class Zahlenraten {
     public static void main(String[] args) {
         Scanner eingabe = new Scanner(System.in);
 
-        int geheimeZahl = (int)(Math.random() * 900 + 100);
+        int geheimeZahl = (int)(Math.random() * 9000 + 1000);
         int anzahlVersuche = 0;
         while (true) {
             System.out.print("Bitte Tipp eingeben: ");
@@ -44,8 +44,14 @@ public class Zahlenraten {
                 System.out.println("Gratuliere, die Zahl ist richtig");
                 break;
             }
-            else if (tipp > geheimeZahl){
+            else if (tipp - 500 > geheimeZahl) {
+                System.out.println("Sorry, die gesuchte Zahl ist viel kleiner");
+            }
+            else if (tipp > geheimeZahl) {
                 System.out.println("Sorry, die gesuchte Zahl ist kleiner");
+            }
+            else if (tipp + 500 < geheimeZahl) {
+                System.out.println("Sorry, die gesuchte Zahl ist viel größer");
             }
             else {
                 System.out.println("Sorry, die gesuchte Zahl ist größer");
