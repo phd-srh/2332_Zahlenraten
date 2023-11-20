@@ -46,9 +46,36 @@ import java.util.Scanner;
 
 public class Zahlenraten {
 
+    // Methode mit Rückgabewert nennt man Funktion
+    // Variable x ist ein Parameter, formale Variable
+    // Aufruf geht nach dem Prinzip: Call-By-Value
+    // -> es entsteht eine neue unabhängige Variable
+    public static double f ( double x ) {
+        return x * x;
+    }
+
+    // Methode ohne Rückgabewert (Datentyp void) nennt man Prozedur
+    public static void ausgabe( double x ) {
+        if (x < 0) return;
+        System.out.println("Der Wert von x = " + x);
+    }
 
 
     public static void main(String[] args) {
+
+        double x = 3.14;
+        ausgabe(x);
+        double y = f(x);
+        ausgabe(x);
+
+
+        System.out.println( f(2) );
+        System.out.println( f(5) );
+        System.out.println( y );
+
+
+
+
         Scanner eingabe = new Scanner(System.in);
 
 //        int geheimeZahl = (int)(Math.random() * 9000 + 1000);
