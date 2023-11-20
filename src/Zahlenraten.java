@@ -24,58 +24,9 @@ import java.util.Scanner;
  *                geheimeZahl 123 Tipp 356 -> 1 vorhandene Ziffer
  */
 
-    /* Einführung in das Thema Methoden
-     *
-     * Methoden aka Funktionen, Prozeduren, Unterprogramme, Subroutine
-     * -> Eigenständiger Programmabschnitt, der bei Bedarf benutzt werden kann.
-     *
-     * Aufbau von Methoden:
-     * Methode = Methodenkopf + Methodenrumpf
-     *
-     * Methodenkopf =
-     * Sichtbarkeit (public) Modifikator (static) Datentyp Methodenname
-     *                                          "(" Parameterliste ")"
-     *
-     * Methodensignatur = Methodenname + Datentyper aller Parameter
-     * (hat was mit Überladung zu tun)
-     *
-     * Methodenrumpf = "{" Anweisungen "}"
-     *
-     * Parameterliste = [ Datentyp Parametername [, ... ] ]
-     */
-
 public class Zahlenraten {
 
-    // Methode mit Rückgabewert nennt man Funktion
-    // Variable x ist ein Parameter, formale Variable
-    // Aufruf geht nach dem Prinzip: Call-By-Value
-    // -> es entsteht eine neue unabhängige Variable
-    public static double f ( double x ) {
-        return x * x;
-    }
-
-    // Methode ohne Rückgabewert (Datentyp void) nennt man Prozedur
-    public static void ausgabe( double x ) {
-        if (x < 0) return;
-        System.out.println("Der Wert von x = " + x);
-    }
-
-
     public static void main(String[] args) {
-
-        double x = 3.14;
-        ausgabe(x);
-        double y = f(x);
-        ausgabe(x);
-
-
-        System.out.println( f(2) );
-        System.out.println( f(5) );
-        System.out.println( y );
-
-
-
-
         Scanner eingabe = new Scanner(System.in);
 
 //        int geheimeZahl = (int)(Math.random() * 9000 + 1000);
@@ -96,19 +47,23 @@ public class Zahlenraten {
                 break;
             }
 
-            int anzahlKorrekteZiffern = 0;
-            int kopieDerGeheimenZahl = geheimeZahl;
-            while ( tipp > 0 ) {
-                int zifferGeheimeZahl = kopieDerGeheimenZahl % 10;
-                int zifferTipp = tipp % 10;
-                if (zifferGeheimeZahl == zifferTipp) {
-                    anzahlKorrekteZiffern++;
-                }
-                kopieDerGeheimenZahl = kopieDerGeheimenZahl / 10;
-                tipp = tipp / 10;
-            }
+            int anzahlKorrekteZiffern = bestimmeAnzahlKorrekteZiffern(geheimeZahl, tipp);
             System.out.println("Es sind " + anzahlKorrekteZiffern + " Ziffern korrekt");
         }
         System.out.println("Sie haben " + anzahlVersuche + " Versuche gebraucht.");
+    }
+
+    public static int bestimmeAnzahlKorrekteZiffern(int geheimeZahl, int tipp) {
+        int anzahlKorrekteZiffern = 0;
+        while ( tipp > 0 ) {
+            int zifferGeheimeZahl = geheimeZahl % 10;
+            int zifferTipp = tipp % 10;
+            if (zifferGeheimeZahl == zifferTipp) {
+                anzahlKorrekteZiffern++;
+            }
+            geheimeZahl = geheimeZahl / 10;
+            tipp = tipp / 10;
+        }
+        return anzahlKorrekteZiffern;
     }
 }
