@@ -56,8 +56,20 @@ public class Zahlenraten {
     }
 
     public static int bestimmeAnzahlVorhandeneZiffern(int geheimeZahl, int tipp) {
+        int vorhandeneZiffern = 0;
+        while ( tipp > 0 ) {
+            int ziffer = tipp % 10;
+            if ( istZifferInZahl(ziffer, geheimeZahl) ) {
+                vorhandeneZiffern++;
+            }
+            tipp /= 10; // Faulenzer für: tipp = tipp / 10
+        }
+        return vorhandeneZiffern;
+    }
+
+    public static boolean istZifferInZahl(int ziffer, int zahl) {
         // TODO
-        return 0;
+        return false;
     }
 
     public static int bestimmeAnzahlKorrekteZiffern(int geheimeZahl, int tipp) {
