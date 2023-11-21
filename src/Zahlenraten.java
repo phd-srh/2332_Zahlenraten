@@ -50,7 +50,7 @@ public class Zahlenraten {
             int anzahlKorrekteZiffern = bestimmeAnzahlKorrekteZiffern(geheimeZahl, tipp);
             int anzahlVorhandeneZiffern = bestimmeAnzahlVorhandeneZiffern(geheimeZahl, tipp);
             System.out.println("Es sind " + anzahlKorrekteZiffern + " Ziffern korrekt");
-            System.out.println("Es sind " + anzahlKorrekteZiffern + " Ziffern vorhanden");
+            System.out.println("Es sind " + anzahlVorhandeneZiffern + " Ziffern vorhanden");
         }
         System.out.println("Sie haben " + anzahlVersuche + " Versuche gebraucht.");
     }
