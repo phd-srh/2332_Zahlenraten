@@ -29,8 +29,14 @@ public class Zahlenraten {
     public static void main(String[] args) {
         Scanner eingabe = new Scanner(System.in);
 
-//        int geheimeZahl = (int)(Math.random() * 9000 + 1000);
-        int geheimeZahl = 123; // nur zum Testen
+        int geheimeZahl;
+        do {
+            geheimeZahl = (int) (Math.random() * 900 + 100);
+            // TODO
+        } while ( zahlEnthältDoppeltenZiffern(geheimeZahl) );
+        // die geheimeZahl darf keine doppelten Ziffern enthalten!
+
+        System.out.println("ACHTUNG, SPOILER: geheimeZahl = " + geheimeZahl);
         int anzahlVersuche = 0;
         while (true) {
             System.out.print("Bitte Tipp eingeben: ");
@@ -53,6 +59,11 @@ public class Zahlenraten {
             System.out.println("Es sind " + anzahlVorhandeneZiffern + " Ziffern vorhanden");
         }
         System.out.println("Sie haben " + anzahlVersuche + " Versuche gebraucht.");
+    }
+
+    public static boolean zahlEnthältDoppeltenZiffern(int zahl) {
+        // TODO
+        return false;
     }
 
     public static int bestimmeAnzahlVorhandeneZiffern(int geheimeZahl, int tipp) {
