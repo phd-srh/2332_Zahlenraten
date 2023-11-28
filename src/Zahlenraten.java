@@ -29,19 +29,21 @@ public class Zahlenraten {
     public static void main(String[] args) {
         Scanner eingabe = new Scanner(System.in);
 
-        // TODO
-        int schwierigkeitsgrad = 3;
-        System.out.print("Bitte geben Sie den Schwierigkeitsgrad (3-7) ein: ");
-        schwierigkeitsgrad = eingabe.nextInt();
+        int schwierigkeitsgrad; // lokale Variable
+        do {
+            System.out.print("Bitte geben Sie den Schwierigkeitsgrad (3-7) ein: ");
+            schwierigkeitsgrad = eingabe.nextInt();
+        } while (schwierigkeitsgrad < 3 || schwierigkeitsgrad > 7);
 
         int geheimeZahl;
+        int wertebereich = (int)Math.pow(10, schwierigkeitsgrad);
+        int startbereich = (int)Math.pow(10, schwierigkeitsgrad-1);
         do {
-            // TODO: an den Schwierigkeitsgrad anpassen
-            geheimeZahl = (int) (Math.random() * 900 + 100);
-        } while ( zahlEnthältDoppelteZiffern(geheimeZahl) );
+            geheimeZahl = (int) (Math.random() * (wertebereich-startbereich) + startbereich);
+        } while ( zahlEnthältDoppelteZiffern(geheimeZahl, schwierigkeitsgrad) );
         // die geheimeZahl darf keine doppelten Ziffern enthalten!
 
-        System.out.println("ACHTUNG, SPOILER: geheimeZahl = " + geheimeZahl);
+//        System.out.println("ACHTUNG, SPOILER: geheimeZahl = " + geheimeZahl);
         int anzahlVersuche = 0;
         while (true) {
             System.out.print("Bitte Tipp eingeben: ");
@@ -67,13 +69,13 @@ public class Zahlenraten {
         System.out.println("Sie haben " + anzahlVersuche + " Versuche gebraucht.");
     }
 
-    public static boolean zahlEnthältDoppelteZiffern(int zahl) {
+    public static boolean zahlEnthältDoppelteZiffern(int zahl, int schwierigkeitsgrad) {
         int anzahlGefundenerZiffern = 0;
         for (int ziffer = 0; ziffer <= 9; ziffer++) {
             if (istZifferInZahl(ziffer,zahl))
                 anzahlGefundenerZiffern++;
         }
-        return anzahlGefundenerZiffern != 3;
+        return anzahlGefundenerZiffern != schwierigkeitsgrad;
     }
 
     public static int bestimmeAnzahlVorhandeneZiffern(int geheimeZahl, int tipp) {
