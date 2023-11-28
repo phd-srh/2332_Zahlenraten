@@ -29,10 +29,15 @@ public class Zahlenraten {
     public static void main(String[] args) {
         Scanner eingabe = new Scanner(System.in);
 
+        // TODO
+        int schwierigkeitsgrad = 3;
+        System.out.print("Bitte geben Sie den Schwierigkeitsgrad (3-7) ein: ");
+        schwierigkeitsgrad = eingabe.nextInt();
+
         int geheimeZahl;
         do {
+            // TODO: an den Schwierigkeitsgrad anpassen
             geheimeZahl = (int) (Math.random() * 900 + 100);
-            // TODO
         } while ( zahlEnthältDoppelteZiffern(geheimeZahl) );
         // die geheimeZahl darf keine doppelten Ziffern enthalten!
 
