@@ -33,7 +33,7 @@ public class Zahlenraten {
         do {
             geheimeZahl = (int) (Math.random() * 900 + 100);
             // TODO
-        } while ( zahlEnthältDoppeltenZiffern(geheimeZahl) );
+        } while ( zahlEnthältDoppelteZiffern(geheimeZahl) );
         // die geheimeZahl darf keine doppelten Ziffern enthalten!
 
         System.out.println("ACHTUNG, SPOILER: geheimeZahl = " + geheimeZahl);
@@ -55,15 +55,20 @@ public class Zahlenraten {
 
             int anzahlKorrekteZiffern = bestimmeAnzahlKorrekteZiffern(geheimeZahl, tipp);
             int anzahlVorhandeneZiffern = bestimmeAnzahlVorhandeneZiffern(geheimeZahl, tipp);
+            anzahlVorhandeneZiffern = anzahlVorhandeneZiffern - anzahlKorrekteZiffern;
             System.out.println("Es sind " + anzahlKorrekteZiffern + " Ziffern korrekt");
             System.out.println("Es sind " + anzahlVorhandeneZiffern + " Ziffern vorhanden");
         }
         System.out.println("Sie haben " + anzahlVersuche + " Versuche gebraucht.");
     }
 
-    public static boolean zahlEnthältDoppeltenZiffern(int zahl) {
-        // TODO
-        return false;
+    public static boolean zahlEnthältDoppelteZiffern(int zahl) {
+        int anzahlGefundenerZiffern = 0;
+        for (int ziffer = 0; ziffer <= 9; ziffer++) {
+            if (istZifferInZahl(ziffer,zahl))
+                anzahlGefundenerZiffern++;
+        }
+        return anzahlGefundenerZiffern != 3;
     }
 
     public static int bestimmeAnzahlVorhandeneZiffern(int geheimeZahl, int tipp) {
@@ -79,7 +84,11 @@ public class Zahlenraten {
     }
 
     public static boolean istZifferInZahl(int ziffer, int zahl) {
-        // TODO
+        while (zahl > 0) {
+            int zifferDerZahl = zahl % 10;
+            if (zifferDerZahl == ziffer) return true;
+            zahl /= 10;
+        }
         return false;
     }
 
